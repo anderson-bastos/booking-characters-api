@@ -1,5 +1,6 @@
 package com.claudio_personagens.bookingcharactersapi.controllers;
 
+import com.claudio_personagens.bookingcharactersapi.PostgresqlContainer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ public class AbstractControllerIT {
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractControllerIT.class);
 
     @Container
-    public static PostgreSQLContainer postgreSQLContainer = IntegrationPostgresqlContainer.getInstance()
+    public static PostgreSQLContainer postgreSQLContainer = PostgresqlContainer.getInstance()
             .withReuse(false);
 
     @Autowired

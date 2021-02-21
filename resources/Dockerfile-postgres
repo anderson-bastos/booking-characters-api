@@ -2,8 +2,8 @@ FROM postgres:10.6
 
 ENV POSTGRES_USER=admin
 ENV POSTGRES_PASSWORD=admin
-ENV POSTGRES_DB=booking-characteres
+ENV POSTGRES_DB=booking_characteres
 
-COPY create-postgresql-database.sh:/docker-entrypoint-initdb.d/create-postgresql-database.sh
+COPY create-database.sh:/docker-entrypoint-initdb.d/create-database.sh
 
 EXPOSE 5432

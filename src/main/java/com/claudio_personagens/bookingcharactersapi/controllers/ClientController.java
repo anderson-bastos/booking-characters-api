@@ -8,19 +8,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "users")
-public class UserController {
+@RequestMapping(path = "clients")
+public class ClientController {
 
     @Autowired
-    private UserService userService;
+    private ClientService clientService;
 
     @PostMapping
-    public User salvar(@RequestBody User user) {
-        return userService.save(user);
+    public @ResponseBody
+    User salvar(@RequestBody User user) {
+        return clientService.save(user);
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.findAll();
+    public @ResponseBody
+    List<User> getUsers() {
+        return clientService.findAll();
     }
 }

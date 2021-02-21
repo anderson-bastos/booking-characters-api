@@ -1,19 +1,19 @@
-package com.claudio_personagens.bookingcharactersapi.controllers;
+package com.claudio_personagens.bookingcharactersapi;
 
 import org.testcontainers.containers.PostgreSQLContainer;
 
-public class IntegrationPostgresqlContainer extends PostgreSQLContainer<IntegrationPostgresqlContainer> {
+public class PostgresqlContainer extends PostgreSQLContainer<PostgresqlContainer> {
 
     private static final String IMAGE_VERSION = "postgres:10.6";
-    private static IntegrationPostgresqlContainer container;
+    private static PostgresqlContainer container;
 
-    private IntegrationPostgresqlContainer(){
+    private PostgresqlContainer(){
         super(IMAGE_VERSION);
     }
 
-    public static IntegrationPostgresqlContainer getInstance() {
+    public static PostgresqlContainer getInstance() {
         if (container == null) {
-            container = new IntegrationPostgresqlContainer();
+            container = new PostgresqlContainer();
         }
         return container;
     }
