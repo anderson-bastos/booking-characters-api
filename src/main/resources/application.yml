@@ -1,0 +1,38 @@
+#server
+server:
+    port: 8080
+
+# configurações do serviço
+spring:
+    datasource:
+        platform: postgres
+        driver-class-name: org.postgresql.Driver
+        url: ${DB_URL:jdbc:postgresql://localhost:5434/booking-characteres?stringtype=unspecified}
+        username: ${DB_USER:admin}
+        password: ${DB_PASSWORD:admin}
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                default_schema: public
+    flyway:
+        enabled: ${FLYWAY_ENABLED:true}
+#        validate-on-migrate: ${FLYWAY_VALIDATE_ON_MIGRATE:false}
+#        baseline-on-migrate: ${FLYWAY_BASELINE_ON_MIGRATE:true}
+
+
+# JWT
+jwt:
+    secret: booking-characteres
+    jwtExpirationMs: 86400000
+
+
+# Configurações para registro de log - Logback
+logging:
+    file: ${PATH_LOG:logs}/booking-characteres.log
+    level:
+        #org.springframework: INFO, WARN, ERROR
+        org.hibernate: DEBUG
+        org.flywaydb: DEBUG

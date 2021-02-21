@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  postgres:
+    container_name: postgres-booking-characteres
+    image: postgres:10.6
+    ports:
+      - "5434:5432"
+    environment:            
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=booking-characteres
+      - TZ=UTC
+    volumes:
+      - ./resources/create-postgresql-database.sh:/docker-entrypoint-initdb.d/create-postgresql-database.sh
+    # networks:
+    #   - app-private-network
+  
+
+#   stubby4j:
+#     container_name: stubby4j-ifoodoffice-management
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-stubby4j
+#     ports:
+#       - "8882:8882"
+#     environment:
+#       STUBBY_PORT: 8882
+#     networks:
+#       - app-private-network
+
+# networks:
+#   app-private-network:
+#     driver: bridge
+#     name: app-private-network
