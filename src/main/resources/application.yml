@@ -7,7 +7,7 @@ spring:
     datasource:
         platform: postgres
         driver-class-name: org.postgresql.Driver
-        url: ${DB_URL:jdbc:postgresql://localhost:5434/booking-characteres?stringtype=unspecified}
+        url: ${DB_URL:jdbc:postgresql://localhost:5432/booking_characteres?stringtype=unspecified}
         username: ${DB_USER:admin}
         password: ${DB_PASSWORD:admin}
     jpa:

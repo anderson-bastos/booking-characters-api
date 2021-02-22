@@ -4,23 +4,18 @@ import com.claudio_personagens.bookingcharactersapi.base.AbstractBaseEntity;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
 @Data
+@Entity
 @Builder
-public class User extends AbstractBaseEntity {
+public class CharacterGroup extends AbstractBaseEntity {
 
-    @Column(length = 150)
-    private String name;
-    @Column(length = 50)
-    private String password;
+    private float price;
 
-    @ManyToMany
-    private Set<Role> roles;
+    @OneToMany
+    private Set<Character> characters;
 }

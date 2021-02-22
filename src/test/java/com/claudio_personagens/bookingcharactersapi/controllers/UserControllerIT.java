@@ -16,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-@Profile("test")
 public class UserControllerIT extends  AbstractControllerIT {
 
     @Test

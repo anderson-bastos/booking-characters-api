@@ -11,18 +11,18 @@ import java.util.List;
 @RequestMapping(path = "clients")
 public class ClientController {
 
-    @Autowired
-    private ClientService clientService;
-
-    @PostMapping
-    public @ResponseBody
-    User salvar(@RequestBody User user) {
-        return clientService.save(user);
-    }
-
-    @GetMapping
-    public @ResponseBody
-    List<User> getUsers() {
-        return clientService.findAll();
-    }
+//    @Autowired
+//    private ClientService clientService;
+//
+//    @PostMapping
+//    public @ResponseBody
+//    User salvar(@RequestBody User user) {
+//        return clientService.save(user);
+//    }
+//
+//    @GetMapping
+//    public @ResponseBody
+//    List<User> getUsers() {
+//        return clientService.findAll();
+//    }
 }

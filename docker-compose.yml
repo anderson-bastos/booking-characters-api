@@ -5,7 +5,7 @@ services:
     container_name: postgres-booking-characteres
     image: postgres:10.6
     ports:
-      - "5400:5432"
+      - "5432:5432"
     environment:            
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
