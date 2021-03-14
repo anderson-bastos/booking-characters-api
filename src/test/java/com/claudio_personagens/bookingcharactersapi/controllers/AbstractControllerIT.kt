@@ -32,7 +32,6 @@ import java.util.HashMap
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureMockMvc(addFilters = false)
-@ActiveProfiles("test")
 class AbstractControllerIT {
 
     @Autowired

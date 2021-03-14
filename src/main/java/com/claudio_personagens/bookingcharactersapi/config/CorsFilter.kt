@@ -16,7 +16,7 @@ class CorsFilter : Filter {
     override fun doFilter(req: ServletRequest, res: ServletResponse, chain: FilterChain) {
         val response = res as HttpServletResponse
         val request = req as HttpServletRequest
-        val origin = request.getHeader("Origin")
+        //val origin = request.getHeader("Origin")
         response.setHeader("Access-Control-Allow-Credentials", "true")
         response.setHeader("Access-Control-Allow-Origin", "*")
         response.setHeader("Vary", "Origin")
