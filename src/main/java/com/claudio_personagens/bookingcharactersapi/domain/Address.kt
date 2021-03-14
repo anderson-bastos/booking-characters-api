@@ -1,6 +1,6 @@
 package com.claudio_personagens.bookingcharactersapi.domain
 
-import com.claudio_personagens.bookingcharactersapi.base.AbstractBaseEntity
+import com.claudio_personagens.bookingcharactersapi.base.BaseEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 
@@ -23,4 +23,4 @@ data class Address (
 
     @Column(length = 100)
     val state: String?
-) : AbstractBaseEntity()
+) : BaseEntity()

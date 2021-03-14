@@ -1,6 +1,6 @@
 package com.claudio_personagens.bookingcharactersapi.security.domain
 
-import com.claudio_personagens.bookingcharactersapi.base.AbstractBaseEntity
+import com.claudio_personagens.bookingcharactersapi.base.BaseEntity
 import javax.persistence.*
 
 @Entity
@@ -18,7 +18,7 @@ data class User (
     @Enumerated(EnumType.STRING)
     @Column(length = 150)
     var role: Role = Role.ROLE_ADMIN
-) : AbstractBaseEntity()
+) : BaseEntity()
 
 
 enum class Role {

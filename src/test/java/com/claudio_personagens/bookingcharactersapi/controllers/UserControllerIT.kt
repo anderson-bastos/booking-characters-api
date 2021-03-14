@@ -34,7 +34,7 @@ class UserControllerIT : AbstractControllerIT() {
                 .content(ObjectMapper().writeValueAsString(login))
             )
             .andDo(MockMvcResultHandlers.print())
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+            .andExpect(MockMvcResultMatchers.status().isOk)
             .andReturn()
     }
 
@@ -47,14 +47,9 @@ class UserControllerIT : AbstractControllerIT() {
                 .content(ObjectMapper().writeValueAsString(login))
             )
             .andDo(MockMvcResultHandlers.print())
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+            .andExpect(MockMvcResultMatchers.status().is4xxClientError)
             .andReturn()
     }
 
-    private fun getUser(admin: String, password: String): HashMap<String, String> {
-        val login = HashMap<String, String>()
-        login["email"] = admin
-        login["password"] = password
-        return login
-    }
+
 }

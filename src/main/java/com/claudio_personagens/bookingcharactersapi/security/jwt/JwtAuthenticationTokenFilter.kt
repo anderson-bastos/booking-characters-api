@@ -24,7 +24,7 @@ class JwtAuthenticationTokenFilter(
     private lateinit var jwtTokenUtil: JwtTokenUtil
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
-        val authToken = request.getHeader("Authorization")
+        val authToken = request.getHeader("Authorization").replace("Bearer ", "")
         val username = jwtTokenUtil.getUsernameFromToken(authToken)
         if (username != null && SecurityContextHolder.getContext().authentication == null) {
             val userDetails = userDetailsService.loadUserByUsername(username)

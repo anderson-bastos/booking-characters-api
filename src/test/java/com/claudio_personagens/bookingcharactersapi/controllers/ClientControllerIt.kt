@@ -1,10 +1,13 @@
 package com.claudio_personagens.bookingcharactersapi.controllers
 
 import com.claudio_personagens.bookingcharactersapi.domain.Client
+import com.claudio_personagens.bookingcharactersapi.security.jwt.JwtTokenUtil
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.junit.Before
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -27,17 +30,20 @@ class ClientControllerIt : AbstractControllerIT() {
     fun `Should Save a client`(){
         val client = Client(
             "Test",
-            "",
+            "Test_2",
             null
         )
 
+        println(ObjectMapper().writeValueAsString(client))
+
         this.mockMvcTest.perform(
-            MockMvcRequestBuilders.get("${ClientController.URL}")
-                .accept(MediaType.APPLICATION_JSON)
-                // .header("Authorization", "Bearer ${jwtHelper.generateToken()}")
+            MockMvcRequestBuilders.post("${ClientController.URL}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\":\"Test\",\"password\":\"Test_2\",\"addresses\":null}")
+                //.content(ObjectMapper().writeValueAsString(client))
             )
             .andDo(MockMvcResultHandlers.print())
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+            .andExpect(MockMvcResultMatchers.status().isCreated)
             .andReturn()
     }
 

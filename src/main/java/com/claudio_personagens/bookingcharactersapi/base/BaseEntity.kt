@@ -7,9 +7,9 @@ import javax.persistence.Id
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class AbstractBaseEntity (
+abstract class BaseEntity (
     @Id
     @Column(length = 36)
     open val id: UUID = UUID.randomUUID(),
-    open var createdAt: Instant = Instant.now()
+    val createdAt: Instant = Instant.now()
 )

@@ -20,6 +20,7 @@
 		<kotlin.version>1.4.30</kotlin.version>
 		<org.jacoco.report.version>0.8.4</org.jacoco.report.version>
 <!--		<kotlin-reflect.version>1.1.51</kotlin-reflect.version>-->
+		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -142,6 +143,13 @@
 			<version>${kotlin.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- MapStruct -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -214,55 +222,22 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-<!--			<plugin>-->
-<!--				<artifactId>maven-surefire-plugin</artifactId>-->
-<!--				<dependencies>-->
-<!--					<dependency>-->
-<!--						<groupId>org.junit.platform</groupId>-->
-<!--						<artifactId>junit-platform-surefire-provider</artifactId>-->
-<!--						<version>1.0.1</version>-->
-<!--					</dependency>-->
-<!--				</dependencies>-->
-<!--			</plugin>-->
-<!--			<plugin>-->
-<!--				<groupId>org.jacoco</groupId>-->
-<!--				<artifactId>jacoco-maven-plugin</artifactId>-->
-<!--				<version>0.8.4</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>prepare-it-test-agent</id>-->
-<!--						<phase>pre-integration-test</phase>-->
-<!--						<goals>-->
-<!--							<goal>prepare-agent</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<append>true</append>-->
-<!--							<inclNoLocationClasses>true</inclNoLocationClasses>-->
-<!--							<includes>-->
-<!--								<include>com/claudio_personagens/bookingcharactersapi/**</include>-->
-<!--							</includes>-->
-<!--							&lt;!&ndash; pass java agent command line to surefire &ndash;&gt;-->
-<!--							<propertyName>jacoco.agent.itArgLine</propertyName>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--					<execution>-->
-<!--						<id>post-merge-report</id>-->
-<!--						<phase>verify</phase>-->
-<!--						<goals>-->
-<!--							<goal>report</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<dataFile>${project.build.directory}/jacoco.exec</dataFile>-->
-<!--							<outputDirectory>${project.reporting.outputDirectory}/jacoco-aggregate</outputDirectory>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--				<configuration>-->
-<!--					<propertyName>jacoco.agent.argLine</propertyName>-->
-<!--					<skip>false</skip>-->
-<!--					<append>true</append>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
